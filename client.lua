@@ -147,7 +147,7 @@ function HandleKey(keymap, controlmap, name, key, handler, usesAlt)
         if handler then
             if type(handler) == "table" then
                 local payload = msgpack.pack({keymap, name, key, controlmap, usesAlt})
-                InvokeFunctionReference(handler.__cfx_functionReference, payload, payload:len(), 0)
+                Citizen.InvokeFunctionReference(handler.__cfx_functionReference, payload, payload:len(), 0)
             elseif type(handler) == 'string' then
                 TriggerServerEvent(handler, keymap, name, key, controlmap, usesAlt)
             else
